@@ -80,7 +80,6 @@
         ws.connect({}, function(frame) {
             ws.subscribe("/sub/comm/room/"+vm.$data.roomId, function(message) {
                 var recv = JSON.parse(message.body);
-                console.log("쉬발 뭐노");
                 vm.recvMessage(recv);
             });
             ws.send("/pub/comm/message", {}, JSON.stringify({type:'ENTER', roomId:vm.$data.roomId, sender:vm.$data.sender}));
